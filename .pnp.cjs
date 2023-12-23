@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@react-three/drei", "virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:9.92.5"],\
           ["@react-three/fiber", "virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:8.15.12"],\
+          ["@react-three/postprocessing", "virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:2.15.11"],\
           ["@types/node", "npm:20.10.5"],\
           ["@types/react", "npm:18.2.45"],\
           ["@types/react-dom", "npm:18.2.18"],\
@@ -540,6 +541,41 @@ const RAW_RUNTIME_STATE =
           "expo",\
           "react-dom",\
           "react-native",\
+          "react",\
+          "three"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@react-three/postprocessing", [\
+      ["npm:2.15.11", {\
+        "packageLocation": "../../../C:/Users/jangm/AppData/Local/Yarn/Berry/cache/@react-three-postprocessing-npm-2.15.11-309b8c1a2e-10c0.zip/node_modules/@react-three/postprocessing/",\
+        "packageDependencies": [\
+          ["@react-three/postprocessing", "npm:2.15.11"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:2.15.11", {\
+        "packageLocation": "./.yarn/__virtual__/@react-three-postprocessing-virtual-40cf1db670/4/C:/Users/jangm/AppData/Local/Yarn/Berry/cache/@react-three-postprocessing-npm-2.15.11-309b8c1a2e-10c0.zip/node_modules/@react-three/postprocessing/",\
+        "packageDependencies": [\
+          ["@react-three/postprocessing", "virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:2.15.11"],\
+          ["@react-three/fiber", "virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:8.15.12"],\
+          ["@types/react", "npm:18.2.45"],\
+          ["@types/react-three__fiber", null],\
+          ["@types/three", "npm:0.159.0"],\
+          ["buffer", "npm:6.0.3"],\
+          ["maath", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:0.6.0"],\
+          ["n8ao", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:1.7.2"],\
+          ["postprocessing", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:6.33.4"],\
+          ["react", "npm:18.2.0"],\
+          ["three", "npm:0.159.0"],\
+          ["three-stdlib", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:2.28.8"]\
+        ],\
+        "packagePeers": [\
+          "@react-three/fiber",\
+          "@types/react-three__fiber",\
+          "@types/react",\
+          "@types/three",\
           "react",\
           "three"\
         ],\
@@ -1705,10 +1741,30 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:0.6.0", {\
+        "packageLocation": "../../../C:/Users/jangm/AppData/Local/Yarn/Berry/cache/maath-npm-0.6.0-bf6e867013-10c0.zip/node_modules/maath/",\
+        "packageDependencies": [\
+          ["maath", "npm:0.6.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["virtual:237b8c100801a45469850a369e57d6e30ecc786ced717e25164641ecebcc717071e2afa25b7a8f62b481afa73828286a14d52873b350782ae3f6523d849c7742#npm:0.10.7", {\
         "packageLocation": "./.yarn/__virtual__/maath-virtual-34043aefce/4/C:/Users/jangm/AppData/Local/Yarn/Berry/cache/maath-npm-0.10.7-b80953640a-10c0.zip/node_modules/maath/",\
         "packageDependencies": [\
           ["maath", "virtual:237b8c100801a45469850a369e57d6e30ecc786ced717e25164641ecebcc717071e2afa25b7a8f62b481afa73828286a14d52873b350782ae3f6523d849c7742#npm:0.10.7"],\
+          ["@types/three", "npm:0.159.0"],\
+          ["three", "npm:0.159.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/three",\
+          "three"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:0.6.0", {\
+        "packageLocation": "./.yarn/__virtual__/maath-virtual-9704f53dd5/4/C:/Users/jangm/AppData/Local/Yarn/Berry/cache/maath-npm-0.6.0-bf6e867013-10c0.zip/node_modules/maath/",\
+        "packageDependencies": [\
+          ["maath", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:0.6.0"],\
           ["@types/three", "npm:0.159.0"],\
           ["three", "npm:0.159.0"]\
         ],\
@@ -1914,6 +1970,32 @@ const RAW_RUNTIME_STATE =
           ["any-promise", "npm:1.3.0"],\
           ["object-assign", "npm:4.1.1"],\
           ["thenify-all", "npm:1.6.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["n8ao", [\
+      ["npm:1.7.2", {\
+        "packageLocation": "../../../C:/Users/jangm/AppData/Local/Yarn/Berry/cache/n8ao-npm-1.7.2-d7b7db881f-10c0.zip/node_modules/n8ao/",\
+        "packageDependencies": [\
+          ["n8ao", "npm:1.7.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:1.7.2", {\
+        "packageLocation": "./.yarn/__virtual__/n8ao-virtual-8c957b64b9/4/C:/Users/jangm/AppData/Local/Yarn/Berry/cache/n8ao-npm-1.7.2-d7b7db881f-10c0.zip/node_modules/n8ao/",\
+        "packageDependencies": [\
+          ["n8ao", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:1.7.2"],\
+          ["@types/postprocessing", null],\
+          ["@types/three", "npm:0.159.0"],\
+          ["postprocessing", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:6.33.4"],\
+          ["three", "npm:0.159.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/postprocessing",\
+          "@types/three",\
+          "postprocessing",\
+          "three"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2277,6 +2359,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["postprocessing", [\
+      ["npm:6.33.4", {\
+        "packageLocation": "../../../C:/Users/jangm/AppData/Local/Yarn/Berry/cache/postprocessing-npm-6.33.4-b518fd7fb4-10c0.zip/node_modules/postprocessing/",\
+        "packageDependencies": [\
+          ["postprocessing", "npm:6.33.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:6.33.4", {\
+        "packageLocation": "./.yarn/__virtual__/postprocessing-virtual-7eb2f3dc6b/4/C:/Users/jangm/AppData/Local/Yarn/Berry/cache/postprocessing-npm-6.33.4-b518fd7fb4-10c0.zip/node_modules/postprocessing/",\
+        "packageDependencies": [\
+          ["postprocessing", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:6.33.4"],\
+          ["@types/three", "npm:0.159.0"],\
+          ["three", "npm:0.159.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/three",\
+          "three"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["potpack", [\
       ["npm:1.0.2", {\
         "packageLocation": "../../../C:/Users/jangm/AppData/Local/Yarn/Berry/cache/potpack-npm-1.0.2-5f717e5a63-10c0.zip/node_modules/potpack/",\
@@ -2612,6 +2716,7 @@ const RAW_RUNTIME_STATE =
           ["snowy-window", "workspace:."],\
           ["@react-three/drei", "virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:9.92.5"],\
           ["@react-three/fiber", "virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:8.15.12"],\
+          ["@react-three/postprocessing", "virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:2.15.11"],\
           ["@types/node", "npm:20.10.5"],\
           ["@types/react", "npm:18.2.45"],\
           ["@types/react-dom", "npm:18.2.18"],\
@@ -2920,6 +3025,32 @@ const RAW_RUNTIME_STATE =
           ["three-stdlib", "npm:2.28.7"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["npm:2.28.8", {\
+        "packageLocation": "../../../C:/Users/jangm/AppData/Local/Yarn/Berry/cache/three-stdlib-npm-2.28.8-d6eff3b78f-10c0.zip/node_modules/three-stdlib/",\
+        "packageDependencies": [\
+          ["three-stdlib", "npm:2.28.8"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:2.28.8", {\
+        "packageLocation": "./.yarn/__virtual__/three-stdlib-virtual-4b36aa5b98/4/C:/Users/jangm/AppData/Local/Yarn/Berry/cache/three-stdlib-npm-2.28.8-d6eff3b78f-10c0.zip/node_modules/three-stdlib/",\
+        "packageDependencies": [\
+          ["three-stdlib", "virtual:40cf1db6707ce24a4d20f3ab31c5172621ad5d6419aa99bd443430b2abb43c93489d516872e0fa4afd9eeface57144eeaff558bd2380abf3808ec917d956cdd3#npm:2.28.8"],\
+          ["@types/draco3d", "npm:1.4.9"],\
+          ["@types/offscreencanvas", "npm:2019.7.3"],\
+          ["@types/three", "npm:0.159.0"],\
+          ["@types/webxr", "npm:0.5.10"],\
+          ["draco3d", "npm:1.5.6"],\
+          ["fflate", "npm:0.6.10"],\
+          ["potpack", "npm:1.0.2"],\
+          ["three", "npm:0.159.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/three",\
+          "three"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:5e433d1b0fe750ca40f7313eb674f0856d5b85404d17f562e6afaa3c708f0502dd3fe5a2413d2973d20652843a81652588bd84dceb00fbf74945e485587578f5#npm:2.28.7", {\
         "packageLocation": "./.yarn/__virtual__/three-stdlib-virtual-7f5d44cf4c/4/C:/Users/jangm/AppData/Local/Yarn/Berry/cache/three-stdlib-npm-2.28.7-247ad72e2b-10c0.zip/node_modules/three-stdlib/",\
