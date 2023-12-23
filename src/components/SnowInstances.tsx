@@ -7,9 +7,10 @@ const SnowInstances = ({ count = 1000 }) => {
 	const particles = useRef<THREE.Points>(null!);
 	const positionRef = useRef<THREE.BufferAttribute>(null!);
 	const velocityRef = useRef<THREE.BufferAttribute>(null!);
+	const [minRange, maxRange] = useMemo(() => [-2, 20], []);
 
 	const points = useMemo(() => {
-		const p = new Array(count).fill(0).map((v) => (0.5 - Math.random()) * 20);
+		const p = new Array(count).fill(0).map((v) => (0.5 - Math.random()) * maxRange);
 		return new THREE.BufferAttribute(new Float32Array(p), 3);
 	}, [count]);
 
@@ -21,7 +22,7 @@ const SnowInstances = ({ count = 1000 }) => {
 	const flakeMaterial = useMemo(() => {
 		const snowflakeMap = useLoader(THREE.TextureLoader, '/assets/snowflake.webp');
 		const mat = {
-			size: 1,
+			size: 0.1,
 			color: 0xffffff,
 			vertexColors: false,
 			map: snowflakeMap,
@@ -33,8 +34,6 @@ const SnowInstances = ({ count = 1000 }) => {
 		return mat;
 	}, []);
 
-	const { camera, mouse } = useThree();
-	const [minRange, maxRange] = useMemo(() => [0, 20], []);
 
 	useFrame((_, dt) => {
 		const posArr = positionRef.current.array;
@@ -43,19 +42,20 @@ const SnowInstances = ({ count = 1000 }) => {
 		for (let i = 0; i < posArr.length; i += 3) {
 			const x = i;
 			const y = i + 1;
-			// const z = i + 2;
+			const z = i + 2;
 
 			const velX = Math.sin(dt * 0.001 * velArr[x]) * 0.1;
 			const velY = Math.cos(dt * 0.0015 * velArr[y]) * 0.02;
+			const velZ = Math.sin(dt * 0.02 * velArr[z]) * Math.PI * 0.1;
 
 			posArr[x] += velX;
 			posArr[y] -= velY;
-			// posArr[z] += velZ;
+			posArr[z] += velZ;
 
 			// accumulation snow
-			if (posArr[y] < -minRange) {
-				posArr[y] = maxRange;
-			}
+			if (posArr[y] < minRange) {
+				posArr[y] = maxRange - (i * 0.01);
+			} 
 		}
 
 		positionRef.current.needsUpdate = true;
@@ -63,7 +63,7 @@ const SnowInstances = ({ count = 1000 }) => {
 	});
 
 	return (
-		<group position={[0, 0, 0]}>
+		<group position={[0, minRange, 0]}>
 			<points ref={particles}>
 				<bufferGeometry>
 					<bufferAttribute ref={positionRef} attach="attributes-position" {...points} />
