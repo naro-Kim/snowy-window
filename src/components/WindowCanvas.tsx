@@ -15,7 +15,7 @@ export const WindowCanvas = () => {
 	const aspect = window.innerWidth / window.innerHeight;
 	const dist = useMemo(() => aspect / (2 * Math.tan((50 * Math.PI) / 360)), []);
 	const pos = useMemo(() => new Vector3(0, 2, 2 + 2 * dist), []);
-	const accumPos = useMemo(() => new Vector3(0, 1.2, 1 + 2 * dist), []);
+	const accumPos = useMemo(() => new Vector3(0, 1, 2 * dist), []);
 
 	return (
 		<Canvas

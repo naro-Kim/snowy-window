@@ -1,5 +1,7 @@
 import * as THREE from 'three';
-import { useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
+import { Box, Instances } from '@react-three/drei';
+import { MathUtils } from 'three';
 
 type AccumulationProps = {
 	count?: number;
@@ -7,41 +9,50 @@ type AccumulationProps = {
 };
 
 export const SnowAccumulation = ({ count = 50, position }: AccumulationProps) => {
-	const particles = useRef<THREE.Points>(null!);
-	const positionRef = useRef<THREE.BufferAttribute>(null!);
-	const indices = useMemo(() => {
-		return new Uint16Array(Array.from({ length: count }, (_, index) => index + 1));
-	}, [count]);
+	const ref = useRef(null!);
 	const points = useMemo(() => {
 		const p = [];
-
 		for (let i = 0; i < count; i++) {
-			const x = (0.5 - Math.random()) * 10;
+			const x = (0.5 - Math.random()) * 6;
 			const y = (0.5 - Math.random()) * 0.2;
-			const z = 0; // Set the z-coordinate to 0 for a flat geometry
-			p.push(x, y, z);
+			p.push(new THREE.Vector3(x, y, 0));
 		}
-
-		return new THREE.BufferAttribute(new Float32Array(p), 3);
+		return p;
 	}, [count]);
 
+	const handlePointEnter = useCallback((e: any) => {
+		e.stopPropagation();
+		// console.log(e);
+		const t = e.eventObject.position.clone();
+		e.eventObject.position.y = MathUtils.lerp(t.y, t.y - 0.2, 0.1);
+		// 눈을 0.1씩 깎아 내림
+
+		// const pointerPos = new THREE.Vector3(e.point);
+		// const dir = new THREE.Vector3(
+		// 	Number(t.x) - Number(pointerPos.x),
+		// 	t.y - pointerPos.y,
+		// 	t.z - pointerPos.z
+		// ).normalize();
+		// const dist = t.distanceTo(pointerPos);
+
+		// console.log(dir, dist);
+		// vec3 seg = position - mousePos;
+		//     vec3 dir = normalize(seg);
+		//     float dist = length(seg);
+		//     if (dist < 2.){
+		//       float force = clamp(1. / (dist * dist), 0., 1.);
+		//       transformed += dir * force;
+		//     }
+	}, []);
+
 	return (
-		<group position={position}>
-			<points
-				onClick={(e) => {
-					e.stopPropagation();
-					console.log(e.target);
-					console.log(e.y);
-				}}
-				ref={particles}
-			>
-				<bufferGeometry attach={'geometry'}>
-					<bufferAttribute ref={positionRef} attach="attributes-position" {...points} />
-					<bufferAttribute attach="index" array={indices} count={count} itemSize={1} />
-				</bufferGeometry>
-				<pointsMaterial side={THREE.DoubleSide} color={'0xffccee'} />
-			</points>
-		</group>
+		<Instances ref={ref} position={position} limit={count} range={count}>
+			<boxGeometry />
+			<meshStandardMaterial />
+			{points.map((pt, i) => (
+				<Box onPointerUp={(e) => handlePointEnter(e)} scale={0.1} key={i} position={pt} />
+			))}
+		</Instances>
 	);
 };
 
@@ -49,7 +60,8 @@ export const SnowAccumulation = ({ count = 50, position }: AccumulationProps) =>
  * 1-1. snow buffer geomtry
  * 	- buffer geometry로 flat하게 구현해둠
  * 	- 귀엽게 셀 텍스쳐 만들어서 씌워두는 방향으로 가야할 듯
- * 	- onClick event로 구현
+ * 	- onClick event로 구현 -> points 객체에 묶어버리면 개별 buffer geomtry에 접할 수 없다.
+ * 	-
  * 1-2. texture displacement mapping with onclick event
  * 	- glsl 사용해서 만들어야함 난이도 극악
  * 2. increase volume of the snow according to time
