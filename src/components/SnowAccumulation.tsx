@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import snowSound from '../../public/assets/snowSound.wav';
 import { useCallback, useMemo, useRef } from 'react';
 import { Box, Instances } from '@react-three/drei';
 import { MathUtils } from 'three';
@@ -10,6 +11,7 @@ type AccumulationProps = {
 
 const SnowAccumulation = ({ count = 50, position }: AccumulationProps) => {
 	const ref = useRef(null!);
+	const snowEffectSound = new Audio(snowSound);
 	const points = useMemo(() => {
 		const p = [];
 		for (let i = 0; i < count; i++) {
@@ -23,12 +25,11 @@ const SnowAccumulation = ({ count = 50, position }: AccumulationProps) => {
 
 	const handlePointEnter = useCallback((e: any) => {
 		e.stopPropagation();
-		const t = e.eventObject.position.clone();
-		e.eventObject.position.y = MathUtils.lerp(t.y, t.y - 0.2, 0.1);
-		if (t.y < position.y) {
-			t.y++;
-		}
 		// 눈을 0.1씩 깎아 내림
+		const t = e.eventObject.position.clone();
+		e.eventObject.position.y = MathUtils.lerp(t.y, t.y - 0.2, 0.2);
+		// 눈 치우는 소리 재생
+		snowEffectSound.play();
 	}, []);
 
 	return (
