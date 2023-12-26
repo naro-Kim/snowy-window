@@ -3,19 +3,25 @@
 import { Canvas } from '@react-three/fiber';
 import { useMemo } from 'react';
 import { Euler, Vector3 } from 'three';
+import { Bloom, DepthOfField, EffectComposer } from '@react-three/postprocessing';
 import SnowInstances from '@/components/SnowInstances';
 import SnowScene from '@/components/SnowScene';
 import CameraRig from '@/components/CameraRig';
-import { Background } from './Background';
-import { Bloom, DepthOfField, EffectComposer } from '@react-three/postprocessing';
-import { SnowAccumulation } from './SnowAccumulation';
-import { OrbitControls } from '@react-three/drei';
+import Background from '@/components/Background';
+import SnowAccumulation from '@/components/SnowAccumulation';
 
 export const WindowCanvas = () => {
 	const aspect = window.innerWidth / window.innerHeight;
-	const dist = useMemo(() => aspect / (2 * Math.tan((50 * Math.PI) / 360)), []);
-	const pos = useMemo(() => new Vector3(0, 2, 2 + 2 * dist), []);
+	const dist = useMemo(() => {
+		let temp = aspect / (2 * Math.tan((50 * Math.PI) / 360));
+		return temp < 1 ? temp + 1 : temp;
+	}, []);
+	const pos = useMemo(() => {
+		return dist < 1 ? new Vector3(0, 1, 3 + 2 * dist) : new Vector3(0, 2, 2 + 2 * dist);
+	}, []);
 	const accumPos = useMemo(() => new Vector3(0, 1, 2 * dist), []);
+
+	console.log(aspect, dist, pos);
 
 	return (
 		<Canvas

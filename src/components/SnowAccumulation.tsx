@@ -8,12 +8,12 @@ type AccumulationProps = {
 	position: THREE.Vector3;
 };
 
-export const SnowAccumulation = ({ count = 50, position }: AccumulationProps) => {
+const SnowAccumulation = ({ count = 50, position }: AccumulationProps) => {
 	const ref = useRef(null!);
 	const points = useMemo(() => {
 		const p = [];
 		for (let i = 0; i < count; i++) {
-			const x = (0.5 - Math.random()) * 6;
+			const x = (0.5 - Math.random()) * 3;
 			const y = (0.5 - Math.random()) * 0.2;
 			p.push(new THREE.Vector3(x, y, 0));
 		}
@@ -22,35 +22,29 @@ export const SnowAccumulation = ({ count = 50, position }: AccumulationProps) =>
 
 	const handlePointEnter = useCallback((e: any) => {
 		e.stopPropagation();
-		// console.log(e);
 		const t = e.eventObject.position.clone();
 		e.eventObject.position.y = MathUtils.lerp(t.y, t.y - 0.2, 0.1);
+		if (t.y < position.y) {
+			t.y++;
+		}
 		// 눈을 0.1씩 깎아 내림
-
-		// const pointerPos = new THREE.Vector3(e.point);
-		// const dir = new THREE.Vector3(
-		// 	Number(t.x) - Number(pointerPos.x),
-		// 	t.y - pointerPos.y,
-		// 	t.z - pointerPos.z
-		// ).normalize();
-		// const dist = t.distanceTo(pointerPos);
-
-		// console.log(dir, dist);
-		// vec3 seg = position - mousePos;
-		//     vec3 dir = normalize(seg);
-		//     float dist = length(seg);
-		//     if (dist < 2.){
-		//       float force = clamp(1. / (dist * dist), 0., 1.);
-		//       transformed += dir * force;
-		//     }
 	}, []);
 
 	return (
 		<Instances ref={ref} position={position} limit={count} range={count}>
 			<boxGeometry />
-			<meshStandardMaterial />
 			{points.map((pt, i) => (
-				<Box onPointerUp={(e) => handlePointEnter(e)} scale={0.1} key={i} position={pt} />
+				<Box
+					receiveShadow={false}
+					castShadow={false}
+					args={[1, 5, 1]}
+					onPointerUp={(e) => handlePointEnter(e)}
+					scale={0.1}
+					key={i}
+					position={pt}
+				>
+					<meshToonMaterial color={new THREE.Color('0xB2B9C9')} />
+				</Box>
 			))}
 		</Instances>
 	);
@@ -70,3 +64,5 @@ export const SnowAccumulation = ({ count = 50, position }: AccumulationProps) =>
  *
  *
  */
+
+export default SnowAccumulation;
