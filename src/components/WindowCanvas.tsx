@@ -9,6 +9,8 @@ import { SnowScene } from '@/components/SnowScene';
 import CameraRig from '@/components/CameraRig';
 import Background from '@/components/Background';
 import SnowAccumulation from '@/components/SnowAccumulation';
+import GithubPoster from '@/components/GithubPoster';
+import { OrbitControls } from '@react-three/drei';
 
 export const WindowCanvas = () => {
 	const aspect = window.innerWidth / window.innerHeight;
@@ -34,7 +36,6 @@ export const WindowCanvas = () => {
 			{/* Postprocessing */}
 			<EffectComposer disableNormalPass>
 				<Bloom luminanceThreshold={0} mipmapBlur luminanceSmoothing={0.2} intensity={1} />
-				<DepthOfField target={[0, 0, 20]} focalLength={0.1} bokehScale={4} height={200} />
 			</EffectComposer>
 			{/* Envirounment Settings */}
 			<group>
@@ -47,6 +48,7 @@ export const WindowCanvas = () => {
 			{/* Snowy scene objects */}
 			<SnowInstances count={300} velocity={0.015} />
 			<SnowAccumulation position={accumPos} />
+			<GithubPoster />
 			<SnowScene rotation={new Euler(0, Math.PI, 0)} />
 			{/* Camera movements */}
 			<CameraRig />
