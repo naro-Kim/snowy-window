@@ -87,8 +87,11 @@ type GLTFResult = GLTF & {
     Pine2_Snow001: THREE.Mesh;
     Pine2_Snow002: THREE.Mesh;
     Branch001: THREE.Mesh;
+    Mouse: THREE.Mesh;
     Snow_part001: THREE.Mesh;
     Snowman001: THREE.Mesh;
+    Snowman002: THREE.Mesh;
+    Snowman003: THREE.Mesh;
     Santa_hat_1: THREE.Mesh;
     Santa_hat_2: THREE.Mesh;
     Present_big_decor_1: THREE.Mesh;
@@ -105,34 +108,38 @@ type GLTFResult = GLTF & {
     Present_cube_decor_1: THREE.Mesh;
     Present_cube_decor_2: THREE.Mesh;
     Present_cube_decor_3: THREE.Mesh;
-    Cube: THREE.Mesh;
+    Bricks: THREE.Mesh;
+    Wall: THREE.Mesh;
   };
   materials: {
     ["Material #25.010"]: THREE.MeshStandardMaterial;
     ["tree.007"]: THREE.MeshStandardMaterial;
     ["tree_.009"]: THREE.MeshStandardMaterial;
-    ["Material #26"]: THREE.MeshStandardMaterial;
-    ["Evergreen.002"]: THREE.MeshPhysicalMaterial;
+    stone: THREE.MeshStandardMaterial;
+    ["Evergreen.002"]: THREE.MeshStandardMaterial;
     branch: THREE.MeshStandardMaterial;
+    Snowman_eyes: THREE.MeshStandardMaterial;
     snow: THREE.MeshBasicMaterial;
-    Snowman: THREE.MeshStandardMaterial;
+    Snowman: THREE.MeshPhysicalMaterial;
+    Snowman_nose: THREE.MeshStandardMaterial;
     white_decor: THREE.MeshStandardMaterial;
     red_decor: THREE.MeshStandardMaterial;
     green_forest: THREE.MeshStandardMaterial;
     ["red_decor.001"]: THREE.MeshStandardMaterial;
     ["present_decor.001"]: THREE.MeshPhysicalMaterial;
-    ["green_forest.001"]: THREE.MeshStandardMaterial;
+    ["green_forest.001"]: THREE.MeshPhysicalMaterial;
     brown_picture_frame: THREE.MeshPhysicalMaterial;
     brown_decor: THREE.MeshStandardMaterial;
     papir_flaska: THREE.MeshPhysicalMaterial;
     ["candy_white.002"]: THREE.MeshStandardMaterial;
     present_decor: THREE.MeshPhysicalMaterial;
     ["forest green"]: THREE.MeshStandardMaterial;
-    Material: THREE.MeshStandardMaterial;
+    ["Material.001"]: THREE.MeshStandardMaterial;
+    wall: THREE.MeshStandardMaterial;
   };
 };
 
-function SnowScene(props: JSX.IntrinsicElements["group"]) {
+export function SnowScene(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/assets/SnowScene.glb") as GLTFResult;
   return (
     <group {...props} dispose={null}>
@@ -863,7 +870,7 @@ function SnowScene(props: JSX.IntrinsicElements["group"]) {
         castShadow
         receiveShadow
         geometry={nodes.Bush_winter_010.geometry}
-        material={materials["Material #26"]}
+        material={materials.stone}
         position={[-2.854, -0.086, -1.783]}
         rotation={[1.425, 0.342, -1.84]}
         scale={0.005}
@@ -872,7 +879,7 @@ function SnowScene(props: JSX.IntrinsicElements["group"]) {
         castShadow
         receiveShadow
         geometry={nodes.Bush_winter_010001.geometry}
-        material={materials["Material #26"]}
+        material={materials.stone}
         position={[-3.621, -0.204, -1.055]}
         rotation={[Math.PI / 2, 0, 1.155]}
         scale={0.006}
@@ -881,7 +888,7 @@ function SnowScene(props: JSX.IntrinsicElements["group"]) {
         castShadow
         receiveShadow
         geometry={nodes.Bush_winter_010002.geometry}
-        material={materials["Material #26"]}
+        material={materials.stone}
         position={[-2.512, 0.109, -1.023]}
         rotation={[Math.PI / 2, 0.189, -2.829]}
         scale={0.003}
@@ -890,7 +897,7 @@ function SnowScene(props: JSX.IntrinsicElements["group"]) {
         castShadow
         receiveShadow
         geometry={nodes.Bush_winter_010003.geometry}
-        material={materials["Material #26"]}
+        material={materials.stone}
         position={[3.319, -0.067, -0.14]}
         rotation={[Math.PI / 2, 0.011, 2.995]}
         scale={0.005}
@@ -901,6 +908,7 @@ function SnowScene(props: JSX.IntrinsicElements["group"]) {
         geometry={nodes.Pine3_Snow001.geometry}
         material={materials["Evergreen.002"]}
         position={[4.107, 0.052, 1.446]}
+        rotation={[Math.PI, -0.81, Math.PI]}
         scale={[0.648, 0.464, 0.648]}
       />
       <mesh
@@ -943,6 +951,15 @@ function SnowScene(props: JSX.IntrinsicElements["group"]) {
         <mesh
           castShadow
           receiveShadow
+          geometry={nodes.Mouse.geometry}
+          material={materials.Snowman_eyes}
+          position={[0.022, 1.121, -0.235]}
+          rotation={[-0.19, 0, 0]}
+          scale={0.019}
+        />
+        <mesh
+          castShadow
+          receiveShadow
           geometry={nodes.Snow_part001.geometry}
           material={materials.snow}
           position={[0, 0.144, 0]}
@@ -953,6 +970,24 @@ function SnowScene(props: JSX.IntrinsicElements["group"]) {
           receiveShadow
           geometry={nodes.Snowman001.geometry}
           material={materials.Snowman}
+          position={[0, 0.138, 0]}
+          rotation={[-Math.PI, 0, -Math.PI]}
+          scale={[-0.381, -0.365, -0.381]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Snowman002.geometry}
+          material={materials.Snowman_eyes}
+          position={[0, 0.138, 0]}
+          rotation={[-Math.PI, 0, -Math.PI]}
+          scale={[-0.381, -0.365, -0.381]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Snowman003.geometry}
+          material={materials.Snowman_nose}
           position={[0, 0.138, 0]}
           rotation={[-Math.PI, 0, -Math.PI]}
           scale={[-0.381, -0.365, -0.381]}
@@ -1087,15 +1122,23 @@ function SnowScene(props: JSX.IntrinsicElements["group"]) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cube.geometry}
-        material={materials.Material}
-        position={[0.022, 1.086, -0.235]}
-        rotation={[-0.19, 0, 0]}
-        scale={0.019}
+        geometry={nodes.Bricks.geometry}
+        material={materials["Material.001"]}
+        position={[0.049, 2.239, -5.254]}
+        rotation={[-Math.PI, 1.571, 0]}
+        scale={[-0.021, -0.078, -0.236]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Wall.geometry}
+        material={materials.wall}
+        position={[0.049, 2.239, -5.262]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={0.748}
       />
     </group>
   );
 }
 
 useGLTF.preload("/assets/SnowScene.glb");
-export default SnowScene;
