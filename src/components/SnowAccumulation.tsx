@@ -14,8 +14,9 @@ const SnowAccumulation = ({ count = 50, position }: AccumulationProps) => {
 		const p = [];
 		for (let i = 0; i < count; i++) {
 			const x = (0.5 - Math.random()) * 3;
-			const y = (0.5 - Math.random()) * 0.2;
-			p.push(new THREE.Vector3(x, y, 0));
+			const y = (0.5 - Math.random()) * 0.01;
+			const z = (0.5 - Math.random()) * 0.2;
+			p.push(new THREE.Vector3(x, y, z));
 		}
 		return p;
 	}, [count]);
@@ -37,13 +38,13 @@ const SnowAccumulation = ({ count = 50, position }: AccumulationProps) => {
 				<Box
 					receiveShadow={false}
 					castShadow={false}
-					args={[1, 5, 1]}
-					onPointerUp={(e) => handlePointEnter(e)}
+					args={[1, 5, 0.5]}
+					onPointerDown={(e) => handlePointEnter(e)}
 					scale={0.1}
 					key={i}
 					position={pt}
 				>
-					<meshToonMaterial color={new THREE.Color('0xB2B9C9')} />
+					<meshToonMaterial />
 				</Box>
 			))}
 		</Instances>
