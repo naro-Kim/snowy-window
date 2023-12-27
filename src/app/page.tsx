@@ -1,15 +1,16 @@
 import dynamic from 'next/dynamic';
 import { SoundPlayer } from '@/components/SoundPlayer';
+import { Loader } from '@/components/Loader';
 export default function Home() {
 	const WindowCanvas = dynamic(() => import('@/components/'), {
 		ssr: false,
-		loading: () => <div className='w-full text-center'><p>Loading...</p></div>,
+		loading: () => <Loader />,
 	});
 
 	return (
-		<main className="grid min-h-content grid-flow-row gap-24">
+		<main>
 			<SoundPlayer />
-			<WindowCanvas /> 
+			<WindowCanvas />
 		</main>
 	);
 }
