@@ -22,17 +22,11 @@ export const WindowCanvas = () => {
 		return dist < 2 ? new Vector3(0, 2, 2 + 2 * dist) : new Vector3(0, 2, 2 + 2 * dist);
 	}, []);
 	const accumPos = useMemo(() => {
-		return dist < 2 ? new Vector3(0, 1.2, 1 + 2 * dist) : new Vector3(0, 1.2, 0.6 + 2 * dist)
+		return dist < 2 ? new Vector3(0, 1.2, 1 + 2 * dist) : new Vector3(0, 1.2, 0.6 + 2 * dist);
 	}, []);
 
-
 	return (
-		<Canvas
-			shadows
-			dpr={[1, 1.5]}
-			camera={{ position: pos, fov: 45, aspect: aspect }}
-			className={'w-full h-full'}
-		>
+		<Canvas shadows dpr={[1, 1.5]} camera={{ position: pos, fov: 45, aspect: aspect }}>
 			{/* Postprocessing */}
 			<EffectComposer disableNormalPass>
 				<Bloom luminanceThreshold={0} mipmapBlur luminanceSmoothing={0.2} intensity={1} />
