@@ -6,7 +6,7 @@ import './globals.css';
 const noto = Noto_Sans_KR({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	metadataBase: new URL('https://snowy-window.vercel.app/')
+	metadataBase: new URL('https://snowy-window.vercel.app/'),
 	openGraph: {
 		title: 'Interactive Winter Wonderland: Three.js Snowscape Project',
 		description: `Winter Wonderland by Ahhyun Kim :\n 
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en"> 
+		<html lang="en">
 			<body className={noto.className}>{children}</body>
 		</html>
 	);
