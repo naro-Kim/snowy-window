@@ -32,32 +32,7 @@ const SnowInstances = ({ count = 200, velocity = 0.01 }) => {
 		};
 		return mat;
 	}, []);
-
-	const shader = {
-		uniforms: {
-			texture: { value: new THREE.TextureLoader().load('/assets/snowflake.webp') },
-		},
-		vertexShader: `
-      attribute vec3 position;
-      attribute vec3 offset;
-      uniform float time;
-      varying vec2 vUv;
-      
-      void main() {
-        vec3 newPosition = position + offset;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-        vUv = uv;
-      }
-    `,
-		fragmentShader: `
-      uniform sampler2D texture;
-      varying vec2 vUv;
-
-      void main() {
-        gl_FragColor = texture2D(texture, vUv);
-      }
-    `,
-	};
+ 
 
 	useFrame((_, dt) => {
 		const posArr = positionRef.current.array;
