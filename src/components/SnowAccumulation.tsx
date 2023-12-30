@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import snowSound from '../../public/assets/snowSound.wav';
+import snowSound from '../../public/audio/snowSound.wav';
 import { useCallback, useMemo, useRef } from 'react';
 import { Instances } from '@react-three/drei';
 import { MathUtils } from 'three';
