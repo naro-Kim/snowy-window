@@ -31,8 +31,6 @@ export const WindowCanvas = () => {
       : new Vector3(0, 1.2, 0.6 + 2 * dist);
   }, []);
 
-  console.log(dist);
-
   return (
     <Canvas
       shadows
