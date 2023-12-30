@@ -1,13 +1,13 @@
 import * as THREE from 'three';
 import snowSound from '../../public/assets/snowSound.wav';
 import { useCallback, useMemo, useRef } from 'react';
-import { Box, Instances } from '@react-three/drei';
+import { Instances } from '@react-three/drei';
 import { MathUtils } from 'three';
-import { SnowBlock } from './SnowBlock';
+import { SnowBlock } from '@/components/SnowBlock';
 
 type AccumulationProps = {
-	count?: number;
-	position: THREE.Vector3;
+  count?: number;
+  position: THREE.Vector3;
 };
 
 const SnowAccumulation = ({ count = 20, position }: AccumulationProps) => {
@@ -24,14 +24,14 @@ const SnowAccumulation = ({ count = 20, position }: AccumulationProps) => {
 		return p;
 	}, [count]);
 
-	const handlePointEnter = useCallback((e: any) => {
-		e.stopPropagation();
-		// 눈을 0.1씩 깎아 내림
-		const t = e.eventObject.position.clone();
-		e.eventObject.position.y = MathUtils.lerp(t.y, t.y - 0.2, 0.2);
-		// 눈 치우는 소리 재생
-		snowEffectSound.play();
-	}, []);
+  const handlePointEnter = useCallback((e: any) => {
+    e.stopPropagation();
+    // 눈을 0.1씩 깎아 내림
+    const t = e.eventObject.position.clone();
+    e.eventObject.position.y = MathUtils.lerp(t.y, t.y - 0.2, 0.2);
+    // 눈 치우는 소리 재생
+    snowEffectSound.play();
+  }, []);
 
 	return (
 		<Instances ref={ref} position={position} limit={count} range={count}>

@@ -1,78 +1,96 @@
-import * as THREE from 'three';
-import { useMemo, useRef } from 'react';
-import { useFrame, useLoader, useThree } from '@react-three/fiber';
+import * as THREE from "three";
+import { useMemo, useRef } from "react";
+import { useFrame, useLoader } from "@react-three/fiber";
+
+/**
+ * @param {number} count : 눈이 내릴 개수입니다.
+ * @param {number} velocity : 눈이 내리는 속력입니다.
+ * @returns count 개수만큼 velocity의 속력을 가진 눈이 내립니다.
+ */
 
 const SnowInstances = ({ count = 200, velocity = 0.01 }) => {
-	const particles = useRef<THREE.Points>(null!);
-	const positionRef = useRef<THREE.BufferAttribute>(null!);
-	const velocityRef = useRef<THREE.BufferAttribute>(null!);
-	const [minRange, maxRange] = useMemo(() => [-8, 8], []);
+  const particles = useRef<THREE.Points>(null!);
+  const positionRef = useRef<THREE.BufferAttribute>(null!);
+  const velocityRef = useRef<THREE.BufferAttribute>(null!);
+  const [minRange, maxRange] = useMemo(() => [-8, 8], []);
 
-	const points = useMemo(() => {
-		const p = new Array(count).fill(0).map((v) => (0.5 - Math.random()) * maxRange);
-		return new THREE.BufferAttribute(new Float32Array(p), 3);
-	}, [count]);
+  const points = useMemo(() => {
+    const p = new Array(count)
+      .fill(0)
+      .map((v) => (0.5 - Math.random()) * maxRange);
+    return new THREE.BufferAttribute(new Float32Array(p), 3);
+  }, [count]);
 
-	const velocities = useMemo(() => {
-		const v = new Array(count * 3).fill(0).map(() => (Math.random() - 0.5) * 0.1);
-		return new THREE.BufferAttribute(new Float32Array(v), 3);
-	}, [count]);
+  const velocities = useMemo(() => {
+    const v = new Array(count * 3)
+      .fill(0)
+      .map(() => (Math.random() - 0.5) * 0.1);
+    return new THREE.BufferAttribute(new Float32Array(v), 3);
+  }, [count]);
 
-	const flakeMaterial = useMemo(() => {
-		const snowflakeMap = useLoader(THREE.TextureLoader, '/assets/snowflake.webp');
-		const mat = {
-			size: 0.2,
-			color: 0xffffff,
-			vertexColors: false,
-			map: snowflakeMap,
-			transparent: true,
-			// opacity: 0.5,
-			fog: true,
-			depthWrite: false,
-		};
-		return mat;
-	}, []);
- 
+  const flakeMaterial = useMemo(() => {
+    const snowflakeMap = useLoader(THREE.TextureLoader, '/assets/snowflake.webp');
+    const mat = {
+      size: 0.2,
+      color: 0xffffff,
+      vertexColors: false,
+      map: snowflakeMap,
+      transparent: true,
+      // opacity: 0.5,
+      fog: true,
+      depthWrite: false,
+    };
+    return mat;
+  }, []);
 
-	useFrame((_, dt) => {
-		const posArr = positionRef.current.array;
-		const velArr = velocityRef.current.array;
 
-		for (let i = 0; i < posArr.length; i += 3) {
-			const x = i;
-			const y = i + 1;
+  useFrame((_, dt) => {
+    const posArr = positionRef.current.array;
+    const velArr = velocityRef.current.array;
 
-			const velX = Math.sin(dt * velArr[x] * (i < 4 ? i + 1 : -(i + 1))) * 0.01;
-			let velY = Math.cos(dt * 0.01 * velArr[y]) * velocity;
+    for (let i = 0; i < posArr.length; i += 3) {
+      const x = i;
+      const y = i + 1;
 
-			posArr[x] += velX;
-			posArr[y] -= velY;
+      const velX = Math.sin(dt * velArr[x] * (i < 4 ? i + 1 : -(i + 1))) * 0.01;
+      let velY = Math.cos(dt * 0.01 * velArr[y]) * velocity;
 
-			// accumulation snow
-			if (posArr[y] < minRange) {
-				posArr[y] = (1 - Math.random()) * maxRange * 0.01;
-				velY = 0;
-			}
-			if (posArr[x] > maxRange || posArr[x] < minRange) {
-				posArr[x] = (1 - Math.random()) * maxRange * 0.01;
-			}
-		}
+      posArr[x] += velX;
+      posArr[y] -= velY;
 
-		positionRef.current.needsUpdate = true;
-		velocityRef.current.needsUpdate = true;
-	});
+      // accumulation snow
+      if (posArr[y] < minRange) {
+        posArr[y] = (1 - Math.random()) * maxRange * 0.01;
+        velY = 0;
+      }
+      if (posArr[x] > maxRange || posArr[x] < minRange) {
+        posArr[x] = (1 - Math.random()) * maxRange * 0.01;
+      }
+    }
 
-	return (
-		<group position={[0, maxRange, 0]}>
-			<points ref={particles}>
-				<bufferGeometry>
-					<bufferAttribute ref={positionRef} attach="attributes-position" {...points} />
-					<bufferAttribute ref={velocityRef} attach="attributes-velocity" {...velocities} />
-				</bufferGeometry>
-				<pointsMaterial {...flakeMaterial} sizeAttenuation={true} />
-			</points>
-		</group>
-	);
+    positionRef.current.needsUpdate = true;
+    velocityRef.current.needsUpdate = true;
+  });
+
+  return (
+    <group position={[0, maxRange, 0]}>
+      <points ref={particles}>
+        <bufferGeometry>
+          <bufferAttribute
+            ref={positionRef}
+            attach="attributes-position"
+            {...points}
+          />
+          <bufferAttribute
+            ref={velocityRef}
+            attach="attributes-velocity"
+            {...velocities}
+          />
+        </bufferGeometry>
+        <pointsMaterial {...flakeMaterial} sizeAttenuation={true} />
+      </points>
+    </group>
+  );
 };
 
 export default SnowInstances;
