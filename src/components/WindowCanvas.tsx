@@ -3,24 +3,22 @@
 import { Canvas } from "@react-three/fiber";
 import { useMemo } from "react";
 import { Euler, Vector3 } from "three";
-import {
-  Bloom,
-  DepthOfField,
-  EffectComposer,
-} from "@react-three/postprocessing";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import SnowInstances from "@/components/SnowInstances";
 import { SnowScene } from "@/components/SnowScene";
 import CameraRig from "@/components/CameraRig";
 import Background from "@/components/Background";
 import SnowAccumulation from "@/components/SnowAccumulation";
 import GithubPoster from "@/components/GithubPoster";
-import { OrbitControls } from "@react-three/drei";
 
+/**
+ * @returns 눈이 내리는 풍경이 담긴 캔버스 컴포넌트를 렌더링합니다.
+ */
 export const WindowCanvas = () => {
   const aspect = (window.innerWidth / window.innerHeight) * 1.5;
   const dist = useMemo(() => {
     let temp = aspect / (2 * Math.tan((50 * Math.PI) / 360));
-    return temp < 1 ? temp + 1 : temp;
+    return temp > 2.5 ? (temp = 2.2) : temp < 1 ? temp + 1 : temp;
   }, []);
   const pos = useMemo(() => {
     return dist < 2
