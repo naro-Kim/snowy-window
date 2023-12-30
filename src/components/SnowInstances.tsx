@@ -1,12 +1,6 @@
-import * as THREE from "three";
-import { useMemo, useRef } from "react";
-import { useFrame, useLoader, useThree } from "@react-three/fiber";
-
-/**
- * @param {number} count : 눈이 내릴 개수입니다.
- * @param {number} velocity : 눈이 내리는 속력입니다.
- * @returns count 개수만큼 velocity의 속력을 가진 눈이 내립니다.
- */
+import * as THREE from 'three';
+import { useMemo, useRef } from 'react';
+import { useFrame, useLoader, useThree } from '@react-three/fiber';
 
 const SnowInstances = ({ count = 200, velocity = 0.01 }) => {
   const particles = useRef<THREE.Points>(null!);
@@ -28,21 +22,21 @@ const SnowInstances = ({ count = 200, velocity = 0.01 }) => {
     return new THREE.BufferAttribute(new Float32Array(v), 3);
   }, [count]);
 
-	const flakeMaterial = useMemo(() => {
-		const snowflakeMap = useLoader(THREE.TextureLoader, '/assets/snowflake.webp');
-		const mat = {
-			size: 0.2,
-			color: 0xffffff,
-			vertexColors: false,
-			map: snowflakeMap,
-			transparent: true,
-			// opacity: 0.5,
-			fog: true,
-			depthWrite: false,
-		};
-		return mat;
-	}, []);
- 
+  const flakeMaterial = useMemo(() => {
+    const snowflakeMap = useLoader(THREE.TextureLoader, '/assets/snowflake.webp');
+    const mat = {
+      size: 0.2,
+      color: 0xffffff,
+      vertexColors: false,
+      map: snowflakeMap,
+      transparent: true,
+      // opacity: 0.5,
+      fog: true,
+      depthWrite: false,
+    };
+    return mat;
+  }, []);
+
 
   useFrame((_, dt) => {
     const posArr = positionRef.current.array;

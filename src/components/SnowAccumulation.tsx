@@ -1,13 +1,9 @@
-import * as THREE from "three";
-import snowSound from "../../public/audio/snowSound.wav";
-import { useCallback, useMemo, useRef } from "react";
-import { Box, Instances } from "@react-three/drei";
-import { MathUtils } from "three";
-
-/**
- * @param {number} count : 초기 렌더링에 쌓이는 눈의 개수입니다.
- * @param {THREE.Vector3} position : 초기 렌더링에 눈 더미가 쌓일 위치입니다.
- */
+import * as THREE from 'three';
+import snowSound from '../../public/assets/snowSound.wav';
+import { useCallback, useMemo, useRef } from 'react';
+import { Instances } from '@react-three/drei';
+import { MathUtils } from 'three';
+import { SnowBlock } from '@/components/SnowBlock';
 
 type AccumulationProps = {
   count?: number;
