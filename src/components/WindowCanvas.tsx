@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useMemo } from "react";
 import { Euler, Vector3 } from "three";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
@@ -10,11 +10,12 @@ import CameraRig from "@/components/CameraRig";
 import Background from "@/components/Background";
 import SnowAccumulation from "@/components/SnowAccumulation";
 import GithubPoster from "@/components/GithubPoster";
+import { Gift } from "@/components/Gift";
 
 /**
  * @returns 눈이 내리는 풍경이 담긴 캔버스 컴포넌트를 렌더링합니다.
  */
-export const WindowCanvas = () => {
+export const WindowCanvas = () => { 
   const aspect = (window.innerWidth / window.innerHeight) * 1.5;
   const dist = useMemo(() => {
     let temp = aspect / (2 * Math.tan((50 * Math.PI) / 360));
@@ -57,10 +58,12 @@ export const WindowCanvas = () => {
       </group>
       <color attach={"background"} args={["#000000"]} />
       <fog attach="fog" color="#000000" near={1} far={20} />
+      {/* interactable objects */}
+      <Gift />
+      <GithubPoster />
       {/* Snowy scene objects */}
       <SnowInstances count={300} velocity={0.015} />
       <SnowAccumulation position={accumPos} />
-      <GithubPoster />
       <SnowScene rotation={new Euler(0, Math.PI, 0)} />
       {/* Camera movements */}
       <CameraRig />

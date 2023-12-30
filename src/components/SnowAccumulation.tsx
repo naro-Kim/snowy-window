@@ -1,9 +1,10 @@
 import * as THREE from 'three';
 import snowSound from '../../public/audio/snowSound.wav';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { Instances } from '@react-three/drei';
 import { MathUtils } from 'three';
 import { SnowBlock } from '@/components/SnowBlock';
+import { useFrame, useThree } from '@react-three/fiber';
 
 type AccumulationProps = {
   count?: number;
@@ -11,7 +12,17 @@ type AccumulationProps = {
 };
 
 const SnowAccumulation = ({ count = 20, position }: AccumulationProps) => {
-	const ref = useRef(null!);
+	const ref = useRef<any>(null!);
+	const vec = useMemo(() => new THREE.Vector3(), []);
+	useFrame((gl, _dt) => {
+		// 시간이 지나면 눈이 쌓입니다. 화면을 뒤덮을 정도로 쌓이지 않도록 elapsedTime으로 조절합니다.
+		if (gl.clock.elapsedTime % 10 <= 0.02 && gl.clock.elapsedTime < 100) {
+			const curPos = ref.current.position.clone();
+			ref.current.position.lerp(vec.set(curPos.x, curPos.y + 0.2, curPos.z),
+				0.05);
+		}
+	});
+
 	const snowEffectSound = new Audio(snowSound);
 	const points = useMemo(() => {
 		const p = [];
