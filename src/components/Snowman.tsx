@@ -37,10 +37,9 @@ export function Snowman(props: JSX.IntrinsicElements["group"]) {
   }, []);
 
   return (
-    <>
-      {showUI &&
-        <Html className="translate-y-[-10rem]" transform center distanceFactor={5}>
-          <div className="animate-bounce text-center text-pretty border-2 border-solid rounded-lg bg-[rgba(0,0,0,0.2)] border-[rgba(0,0,0,0.1)] p-2">
+    <> 
+      <Html position={[0, 2.1, 0]} scale={0.15} className={`transition-all duration-500 ${showUI ? "opacity-100" : "opacity-0"}`} transform center distanceFactor={5}>
+        <div className="transform scale-1000 text-center text-pretty border-2 border-solid rounded-lg bg-[rgba(0,0,0,0.2)] border-[rgba(0,0,0,0.1)] p-2">
             <h1 className="font-bold text-[0.5rem] leading-4">
               {'Cheers to 2024!'}
             </h1>
@@ -49,8 +48,7 @@ export function Snowman(props: JSX.IntrinsicElements["group"]) {
               {'joy, hope, and endless possibilities!'}
             </p>
           </div>
-        </Html>
-      }3a2wsZE
+      </Html> 
       <group {...props} dispose={null} onPointerUp={handlePointerUp} onPointerMissed={handlePointerMissed}>
       <mesh
         castShadow

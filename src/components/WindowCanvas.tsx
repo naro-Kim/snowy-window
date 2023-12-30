@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { useMemo } from "react";
 import { Euler, Vector3 } from "three";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
@@ -12,11 +12,13 @@ import { SnowScene } from "@/components/SnowScene";
 import SnowInstances from "@/components/SnowInstances";
 import SnowAccumulation from "@/components/SnowAccumulation";
 import { Snowman } from "@/components/Snowman";
+import { useSceneContext } from "@/context/SceneContext";
 
 /**
  * @returns 눈이 내리는 풍경이 담긴 캔버스 컴포넌트를 렌더링합니다.
  */
 export const WindowCanvas = () => { 
+  const { zoom, setZoom } = useSceneContext() as any;
   const aspect = (window.innerWidth / window.innerHeight) * 1.5;
   const dist = useMemo(() => {
     let temp = aspect / (2 * Math.tan((50 * Math.PI) / 360));

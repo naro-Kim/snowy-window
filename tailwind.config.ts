@@ -6,7 +6,12 @@ const config: Config = {
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
-	theme: {
+	theme: { 
+		scale: {
+			'0': '0',
+			'200': '2',
+			'1000': '10',
+		},
 		extend: {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
