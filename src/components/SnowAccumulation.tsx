@@ -16,7 +16,7 @@ const SnowAccumulation = ({ count = 20, position }: AccumulationProps) => {
 	const vec = useMemo(() => new THREE.Vector3(), []);
 	useFrame((gl, _dt) => {
 		// 시간이 지나면 눈이 쌓입니다. 화면을 뒤덮을 정도로 쌓이지 않도록 elapsedTime으로 조절합니다.
-		if (gl.clock.elapsedTime % 10 <= 0.02 && gl.clock.elapsedTime < 100) {
+		if (gl.clock.elapsedTime % 100 <= 0.02 && gl.clock.elapsedTime < 1000) {
 			const curPos = ref.current.position.clone();
 			ref.current.position.lerp(vec.set(curPos.x, curPos.y + 0.2, curPos.z),
 				0.05);

@@ -4,13 +4,14 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useMemo } from "react";
 import { Euler, Vector3 } from "three";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import SnowInstances from "@/components/SnowInstances";
-import { SnowScene } from "@/components/SnowScene";
 import CameraRig from "@/components/CameraRig";
 import Background from "@/components/Background";
-import SnowAccumulation from "@/components/SnowAccumulation";
 import GithubPoster from "@/components/GithubPoster";
 import { Gift } from "@/components/Gift";
+import { SnowScene } from "@/components/SnowScene";
+import SnowInstances from "@/components/SnowInstances";
+import SnowAccumulation from "@/components/SnowAccumulation";
+import { Snowman } from "@/components/Snowman";
 
 /**
  * @returns 눈이 내리는 풍경이 담긴 캔버스 컴포넌트를 렌더링합니다.
@@ -64,6 +65,7 @@ export const WindowCanvas = () => {
       {/* Snowy scene objects */}
       <SnowInstances count={300} velocity={0.015} />
       <SnowAccumulation position={accumPos} />
+      <Snowman rotation={new Euler(0, Math.PI, 0)} />
       <SnowScene rotation={new Euler(0, Math.PI, 0)} />
       {/* Camera movements */}
       <CameraRig />
