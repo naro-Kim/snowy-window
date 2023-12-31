@@ -86,14 +86,6 @@ type GLTFResult = GLTF & {
     Pine3_Snow002: THREE.Mesh;
     Pine2_Snow001: THREE.Mesh;
     Pine2_Snow002: THREE.Mesh;
-    Branch001: THREE.Mesh;
-    Mouse: THREE.Mesh;
-    Snow_part001: THREE.Mesh;
-    Snowman001: THREE.Mesh;
-    Snowman002: THREE.Mesh;
-    Snowman003: THREE.Mesh;
-    Santa_hat_1: THREE.Mesh;
-    Santa_hat_2: THREE.Mesh;
     Present_big_decor_1: THREE.Mesh;
     Present_big_decor_2: THREE.Mesh;
     Present_long_1: THREE.Mesh;
@@ -105,9 +97,6 @@ type GLTFResult = GLTF & {
     baubles_decor_1: THREE.Mesh;
     baubles_decor_2: THREE.Mesh;
     baubles_decor_3: THREE.Mesh;
-    Present_cube_decor_1: THREE.Mesh;
-    Present_cube_decor_2: THREE.Mesh;
-    Present_cube_decor_3: THREE.Mesh;
     Bricks: THREE.Mesh;
     Wall: THREE.Mesh;
   };
@@ -117,13 +106,6 @@ type GLTFResult = GLTF & {
     ["tree_.009"]: THREE.MeshStandardMaterial;
     stone: THREE.MeshStandardMaterial;
     ["Evergreen.002"]: THREE.MeshStandardMaterial;
-    branch: THREE.MeshStandardMaterial;
-    Snowman_eyes: THREE.MeshStandardMaterial;
-    snow: THREE.MeshBasicMaterial;
-    Snowman: THREE.MeshPhysicalMaterial;
-    Snowman_nose: THREE.MeshStandardMaterial;
-    white_decor: THREE.MeshStandardMaterial;
-    red_decor: THREE.MeshStandardMaterial;
     green_forest: THREE.MeshStandardMaterial;
     ["red_decor.001"]: THREE.MeshStandardMaterial;
     ["present_decor.001"]: THREE.MeshPhysicalMaterial;
@@ -132,8 +114,6 @@ type GLTFResult = GLTF & {
     brown_decor: THREE.MeshStandardMaterial;
     papir_flaska: THREE.MeshPhysicalMaterial;
     ["candy_white.002"]: THREE.MeshStandardMaterial;
-    present_decor: THREE.MeshPhysicalMaterial;
-    ["forest green"]: THREE.MeshStandardMaterial;
     ["Material.001"]: THREE.MeshStandardMaterial;
     wall: THREE.MeshStandardMaterial;
   };
@@ -938,79 +918,6 @@ export function SnowScene(props: JSX.IntrinsicElements["group"]) {
         rotation={[0, 0, 0.064]}
         scale={0.454}
       />
-      <group position={[0, -0.036, 0]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Branch001.geometry}
-          material={materials.branch}
-          position={[0, 0.138, 0]}
-          rotation={[0.223, 0, 0]}
-          scale={0.099}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mouse.geometry}
-          material={materials.Snowman_eyes}
-          position={[0.022, 1.121, -0.235]}
-          rotation={[-0.19, 0, 0]}
-          scale={0.019}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Snow_part001.geometry}
-          material={materials.snow}
-          position={[0, 0.144, 0]}
-          scale={0.047}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Snowman001.geometry}
-          material={materials.Snowman}
-          position={[0, 0.138, 0]}
-          rotation={[-Math.PI, 0, -Math.PI]}
-          scale={[-0.381, -0.365, -0.381]}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Snowman002.geometry}
-          material={materials.Snowman_eyes}
-          position={[0, 0.138, 0]}
-          rotation={[-Math.PI, 0, -Math.PI]}
-          scale={[-0.381, -0.365, -0.381]}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Snowman003.geometry}
-          material={materials.Snowman_nose}
-          position={[0, 0.138, 0]}
-          rotation={[-Math.PI, 0, -Math.PI]}
-          scale={[-0.381, -0.365, -0.381]}
-        />
-      </group>
-      <group
-        position={[-0.038, 1.35, 0.025]}
-        rotation={[1.788, 0.208, 1.976]}
-        scale={[1.248, 1.357, 1.05]}
-      >
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Santa_hat_1.geometry}
-          material={materials.white_decor}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Santa_hat_2.geometry}
-          material={materials.red_decor}
-        />
-      </group>
       <group
         position={[-0.446, 0.192, 0.001]}
         rotation={[1.566, 0.124, -0.365]}
@@ -1093,30 +1000,6 @@ export function SnowScene(props: JSX.IntrinsicElements["group"]) {
           receiveShadow
           geometry={nodes.baubles_decor_3.geometry}
           material={materials["candy_white.002"]}
-        />
-      </group>
-      <group
-        position={[-0.908, 0.162, 0]}
-        rotation={[1.541, -0.024, -1.143]}
-        scale={2.31}
-      >
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Present_cube_decor_1.geometry}
-          material={materials["red_decor.001"]}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Present_cube_decor_2.geometry}
-          material={materials.present_decor}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Present_cube_decor_3.geometry}
-          material={materials["forest green"]}
         />
       </group>
       <mesh

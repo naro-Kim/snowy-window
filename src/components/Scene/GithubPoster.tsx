@@ -1,7 +1,7 @@
 import { ThreeEvent, useLoader } from "@react-three/fiber";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { Euler, TextureLoader } from "three";
+import { TextureLoader } from "three";
 
 const GithubPoster = () => {
   const router = useRouter();

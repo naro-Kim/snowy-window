@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import Head from 'next/head';
-
 import { Noto_Sans_KR } from 'next/font/google';
+import { SceneContextProvider } from '@/context/SceneContext';
 import './globals.css';
 const noto = Noto_Sans_KR({ subsets: ['latin'] });
 
@@ -32,7 +31,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={noto.className}>{children}</body>
+			<body className={noto.className}>
+				<SceneContextProvider>
+					{children}
+				</SceneContextProvider>
+			</body>
 		</html>
 	);
 }
