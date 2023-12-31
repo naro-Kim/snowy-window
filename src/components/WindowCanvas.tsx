@@ -4,21 +4,20 @@ import { Canvas } from "@react-three/fiber";
 import { useMemo } from "react";
 import { Euler, Vector3 } from "three";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import CameraRig from "@/components/CameraRig";
-import Background from "@/components/Background";
-import GithubPoster from "@/components/GithubPoster";
-import { Gift } from "@/components/Gift";
-import { SnowScene } from "@/components/SnowScene";
-import SnowInstances from "@/components/SnowInstances";
-import SnowAccumulation from "@/components/SnowAccumulation";
-import { Snowman } from "@/components/Snowman";
+import CameraRig from "@/components/Scene/CameraRig";
+import Background from "./Scene/Background";
+import GithubPoster from "@/components/Scene/GithubPoster";
+import { Gift } from "@/components/Scene/Gift";
+import { SnowScene } from "@/components/Scene/SnowScene";
+import SnowInstances from "@/components/Scene/SnowInstances";
+import SnowAccumulation from "@/components/Scene/SnowAccumulation";
+import { Snowman } from "@/components/Scene/Snowman";
 import { useSceneContext } from "@/context/SceneContext";
 
 /**
  * @returns 눈이 내리는 풍경이 담긴 캔버스 컴포넌트를 렌더링합니다.
  */
-export const WindowCanvas = () => { 
-  const { zoom, setZoom } = useSceneContext() as any;
+export const WindowCanvas = () => {  
   const aspect = (window.innerWidth / window.innerHeight) * 1.5;
   const dist = useMemo(() => {
     let temp = aspect / (2 * Math.tan((50 * Math.PI) / 360));

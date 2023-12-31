@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { SoundPlayer } from '@/components/SoundPlayer';
 import { Loader } from '@/components/Loader';
-import { Message } from '@/components/Message';
+import { GuideMessage } from '@/components/GuideMessage';
 export default function Home() {
 	const WindowCanvas = dynamic(() => import('@/components/'), {
 		ssr: false,
@@ -9,8 +9,8 @@ export default function Home() {
 	});
 
 	return (
-		<main>
-			<Message />
+		<main> 
+			<GuideMessage />
 			<SoundPlayer />
 			<WindowCanvas />
 		</main>

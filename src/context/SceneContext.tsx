@@ -4,14 +4,20 @@ const SceneContext = createContext({});
 
 const SceneContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [zoom, setZoom] = useState<boolean>(false);
+  const [isShowUI, setShowUI] = useState<boolean>(false);
 
   const contextValue = useMemo(
     () => ({
       zoom,
       setZoom,
+      isShowUI,
+      setShowUI
     }),
     [zoom,
-      setZoom,]
+      setZoom,
+      isShowUI,
+      setShowUI
+    ]
   );
 
   return (

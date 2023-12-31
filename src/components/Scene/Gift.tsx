@@ -20,7 +20,7 @@ type GLTFResult = GLTF & {
 
 export function Gift(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/assets/gift.glb") as GLTFResult;
-  const { camera, mouse } = useThree();
+  const { camera } = useThree();
   const { zoom, setZoom } = useSceneContext() as any;
 
   const originPos = useMemo(() => {
@@ -45,7 +45,7 @@ export function Gift(props: JSX.IntrinsicElements["group"]) {
       camera.position.lerp(posVec.set(originPos.x, originPos.y, originPos.z), 0.06);
       camera.lookAt(0, 1, 0);
     }
-  }) 
+  })
 
   return (
     <group position={giftVec} onPointerUp={handlePointerUp} onPointerMissed={handlePointerMissed} {...props} dispose={null}>
