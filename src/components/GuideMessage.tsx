@@ -1,4 +1,5 @@
 'use client';
+import { insertData, supabase } from "@/api/client";
 import { useSceneContext } from "@/context/SceneContext";
 import Link from "next/link";
 import { useCallback, useRef, } from "react";
@@ -10,13 +11,15 @@ export const GuideMessage = () => {
     setZoom(false);
   }, []);
 
-  const handleSubmit = useCallback((e: any) => {
+  const handleSubmit = useCallback(async (e: any) => {
     e.preventDefault();
-    e.stopPropagation();
-    console.log({
-      name: e.target.name.value,
-      content: e.target.content.value
-    });
+    e.stopPropagation(); 
+    try {
+      insertData({ table: 'comments', name: e.target.name.value, content: e.target.content.value });
+      setZoom(false);
+    } catch (error) {
+      console.log('Error occurred', { error })
+    }
   }, []);
 
   return (
@@ -56,4 +59,3 @@ export const GuideMessage = () => {
     </>
   )
 };
-

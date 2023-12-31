@@ -8,8 +8,9 @@ export default function Home() {
 		loading: () => <Loader />,
 	});
 
+
 	return (
-		<main> 
+		<main>   
 			<GuideMessage />
 			<SoundPlayer />
 			<WindowCanvas />
