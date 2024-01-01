@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# :snowman: [Winter wonderland](https://snowy-winter-wonderland.vercel.app/)
+ 
+![scene](https://github.com/naro-Kim/snowy-window/assets/51940808/9b8e70f8-3f04-4e61-9623-9a18105a765f)
 
-## Getting Started
+Winter wonderland는 창밖으로 눈이 내리는 겨울 풍경을 구현한 인터랙티브 3d web입니다. 눈이 내려 어둑해지고 흐릿한 배경을 뒤로, 귀여운 눈사람과 겨울 분위기를 즐길 수 있어요. 사용자들은 음악을 듣거나 눈 내리는 풍경을 바라보며 눈을 치울수 도 있습니다. 모바일로도 접속 가능합니다. 
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1️⃣ :snowflake: 눈송이 시뮬레이션
+- 눈이 계속 내립니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ :snowman_with_snow: 눈 쌓기 & 치우기
+- 사용자는 창틀에 쌓인 눈을 치울 수 있습니다. 약 1분 정도의 시간이 지날 때마다 새로운 눈이 쌓여요.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3️⃣ :radio: 음악 플레이어
+- 캐롤 음악을 재생할 수 있습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### :four: :closed_book: 방명록
+- 선물을 눌러 방명록을 남길 수 있습니다.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Skills
+### Frontend
+- `Next.js (14.0.4)`
+- `@react-three/drei (^9.92.5)`
+- `@react-three/fiber (^8.15.12)`
+- `@react-three/postprocessing (^2.15.11)`
+- `tailwindcss (^3.3.0)`
+- `typescript (^5)`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+### Design
+- `Figma`
+- `Blender3D`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### DB
+- `supabase`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Get Started
+
+1. .env 파일을 만들고, 환경변수를 작성합니다.
+2. `yarn` 명령어로 패키지를 설치합니다.
+3. `yarn run dev` 명령어로 로컬에서 프로젝트를 실행합니다.
