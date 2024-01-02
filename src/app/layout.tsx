@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import { SceneContextProvider } from '@/context/SceneContext';
 import './globals.css';
 const noto = Noto_Sans_KR({ subsets: ['latin'] });
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className={noto.className}>
 				<SceneContextProvider>
 					{children}
+					<Analytics />
 				</SceneContextProvider>
 			</body>
 		</html>
