@@ -27,6 +27,11 @@ export const metadata: Metadata = {
 		],
 		type: 'website',
 	},
+	description: `Winter Wonderland by Ahhyun Kim :
+		Immerse yourself in a mesmerizing winter landscape with our Three.js-based project.
+		Experience the serene beauty of falling snowflakes as you engage in the interactive challenge to clear accumulated snow.
+		Unleash the magic of the season and join us in the virtual realm where the snowy scenery comes to life.
+		Bundle up and embark on a unique journey of 'Clear the Snow' interaction amid a picturesque winter wonderland.`,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
