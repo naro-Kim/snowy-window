@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { insertData, supabase } from '@/api/client';
 import { useSceneContext } from '@/context/SceneContext';
 import { useCallback, useRef } from 'react';
-import { MessageModal } from '@/components/MessageModal';
+import { Toast } from '@/components/Toast';
 
 export const GuideMessage = () => {
-	const { zoom, setZoom, isShowUI, setShowUI } = useSceneContext() as any;
+	const { zoom, setZoom, setShowUI } = useSceneContext() as any;
 	const handleBackButton = useCallback((e: any) => {
 		e.stopPropagation();
 		setZoom(false);
@@ -26,7 +26,7 @@ export const GuideMessage = () => {
 
 	return (
 		<>
-			<MessageModal />
+			<Toast />
 			<dialog
 				open={zoom}
 				className={`w-full sm:w-1/2 max-w-7xl rounded-xl bg-[rgba(0,0,0,0.5)] z-10 absolute bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2 duration-500`}
