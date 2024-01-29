@@ -4,6 +4,7 @@ import { insertData, supabase } from '@/api/client';
 import { useSceneContext } from '@/context/SceneContext';
 import { useCallback, useRef } from 'react';
 import { Toast } from '@/components/Toast';
+import useThrottle from '@/hooks/useThrottle';
 
 export const GuideMessage = () => {
 	const { zoom, setZoom, setShowUI } = useSceneContext() as any;
@@ -12,11 +13,15 @@ export const GuideMessage = () => {
 		setZoom(false);
 	}, []);
 
-	const handleSubmit = useCallback(async (e: any) => {
+	const handleSubmit = useCallback(async (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		e.stopPropagation();
 		try {
-			insertData({ table: 'comments', name: e.target.name.value, content: e.target.content.value });
+			const target = e.target as typeof e.target & {
+				name: { value: string };
+				content: { value: string };
+			};
+			insertData({ table: 'comments', name: target.name.value, content: target.content.value });
 			setShowUI(true);
 			setZoom(false);
 		} catch (error) {
