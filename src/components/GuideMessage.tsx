@@ -1,10 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { insertData, supabase } from '@/api/client';
+import { insertData } from '@/api/client';
 import { useSceneContext } from '@/context/SceneContext';
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
 import { Toast } from '@/components/Toast';
-import useThrottle from '@/hooks/useThrottle';
 
 export const GuideMessage = () => {
 	const { zoom, setZoom, setShowUI } = useSceneContext() as any;
@@ -21,7 +20,9 @@ export const GuideMessage = () => {
 				name: { value: string };
 				content: { value: string };
 			};
-			insertData({ table: 'comments', name: target.name.value, content: target.content.value });
+			const name = target.name.value;
+			const content = target.name.value;
+			insertData({ table: 'comments', name: name, content: content });
 			setShowUI(true);
 			setZoom(false);
 		} catch (error) {
