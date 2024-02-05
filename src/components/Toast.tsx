@@ -1,7 +1,7 @@
 import { useSceneContext } from '@/context/SceneContext';
 import { useEffect } from 'react';
 
-export const MessageModal = () => {
+export const Toast = () => {
 	const { isShowUI, setShowUI } = useSceneContext() as any;
 	const modalRemove = () => {
 		setTimeout(() => {
