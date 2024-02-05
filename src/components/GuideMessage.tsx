@@ -37,7 +37,7 @@ export const GuideMessage = () => {
 			content: { value: string };
 		};
 		const name = target.name.value;
-		const content = target.name.value; 
+		const content = target.content.value; 
 		debounceSubmit({ table: 'comments', name: name, content: content }); 
 	}, []);
 
